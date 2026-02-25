@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WebRTC Multimedia App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-wrapper">
+    <header>
+      <h1>🎥 WebRTC Multimedia App</h1>
+      <div id="statusBadge" class="status-badge disconnected">● Disconnected</div>
+    </header>
+
+    <main>
+      <!-- Video Section -->
+      <section class="video-section">
+        <div class="video-container">
+          <video id="localVideo" autoplay muted playsinline></video>
+          <div class="video-label">You (Local)</div>
+          <div id="localOverlay" class="video-overlay">Camera Off</div>
+        </div>
+        <div class="video-container">
+          <video id="remoteVideo" autoplay playsinline></video>
+          <div class="video-label">Peer (Remote)</div>
+          <div id="remoteOverlay" class="video-overlay visible">Waiting for peer...</div>
+        </div>
+      </section>
+
+      <!-- Controls -->
+      <section class="controls-section">
+        <div class="control-group">
+          <button id="connectBtn" class="btn btn-primary" onclick="startConnection()">
+            📡 Connect
+          </button>
+          <button id="disconnectBtn" class="btn btn-danger" onclick="disconnect()" disabled>
+            ✖ Disconnect
+          </button>
+        </div>
+        <div class="control-group">
+          <button id="muteBtn" class="btn btn-secondary" onclick="toggleMute()" disabled>
+            🎙 Mute Mic
+          </button>
+          <button id="cameraBtn" class="btn btn-secondary" onclick="toggleCamera()" disabled>
+            📷 Camera Off
+          </button>
+        </div>
+      </section>
+
+      <!-- Chat Section -->
+      <section class="chat-section">
+        <h2>💬 Chat</h2>
+        <div id="chatBox" class="chat-box"></div>
+        <div class="chat-input-row">
+          <input
+            type="text"
+            id="messageInput"
+            placeholder="Type a message..."
+            onkeydown="if(event.key==='Enter') sendMessage()"
+            disabled
+          />
+          <button id="sendBtn" class="btn btn-primary" onclick="sendMessage()" disabled>
+            Send
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="client.js"></script>
+</body>
+</html>

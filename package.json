@@ -1,0 +1,12 @@
+{
+  "name": "webrtc-assignment2",
+  "version": "1.0.0",
+  "description": "WebRTC P2P Multimedia Application with Signaling Server",
+  "main": "server/signaling-server.js",
+  "scripts": {
+    "start": "node server/signaling-server.js"
+  },
+  "dependencies": {
+    "ws": "^8.19.0"
+  }
+}
